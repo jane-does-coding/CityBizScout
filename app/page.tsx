@@ -1,3 +1,9 @@
+import Parallax from "./components/ParallaxScroll/Parallax";
+
 export default function Home() {
-  return <h1 className="text-[5rem]">hello</h1>;
+  return (
+    <div className="">
+      <Parallax />
+    </div>
+  );
 }

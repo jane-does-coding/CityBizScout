@@ -15,8 +15,8 @@ const Heading = ({ title, subtitle, center, redirect }: HeadingProps) => {
 
   return (
     <div className={center ? "text-center" : "text-start"}>
-      <h2 className="text-2xl text-black">{title}</h2>
-      {subtitle && <h3 className="font-light text-neutral-700">{subtitle}</h3>}
+      <h2 className="text-2xl text-neutral-100">{title}</h2>
+      {subtitle && <h3 className="font-light text-neutral-300">{subtitle}</h3>}
       {redirect && (
         <Button onClick={(e) => router.push("/")} label="Home Page" rounded />
       )}

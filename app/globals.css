@@ -7,3 +7,27 @@ body,
 :root {
   height: 100%;
 }
+
+img {
+  object-fit: cover;
+}
+
+/* .gallery:nth-child(1) {
+  top: -45% !important;
+} */
+
+.my-column:nth-of-type(1) {
+  transform: translateY(-45%);
+}
+
+.my-column:nth-of-type(2) {
+  transform: translateY(-95%);
+}
+
+.my-column:nth-of-type(3) {
+  transform: translateY(-45%);
+}
+
+.my-column:nth-of-type(4) {
+  transform: translateY(-75%);
+}

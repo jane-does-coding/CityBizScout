@@ -11,15 +11,13 @@ interface NavbarProps {
 
 const Navbar = ({ currentUser }: NavbarProps) => {
   return (
-    <nav className="fixed w-full bg-white z-10">
-      <div className="py-4 border-b-[1px]">
-        <Container>
-          <div className="flex flex-row items-center justify-between gap-3 md:gap-0">
-            <Logo />
-            {currentUser?.name}
-            <UserMenu currentUser={currentUser} />
-          </div>
-        </Container>
+    <nav className="fixed top-2 w-[97.5vw] sm:w-[95vw] md:w-[80vw] lg:w-[60vw] mx-[1.25vw] sm:mx-[2.5vw] md:mx-[10vw] lg:mx-[20vw] bg-slate-800 rounded-full z-10">
+      <div className="py-2">
+        <div className="flex flex-row items-center justify-between gap-3 md:gap-0 px-12">
+          <Logo />
+          {currentUser?.name}
+          <UserMenu currentUser={currentUser} />
+        </div>
       </div>
     </nav>
   );
