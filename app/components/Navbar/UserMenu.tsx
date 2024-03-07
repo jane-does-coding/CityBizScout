@@ -6,10 +6,12 @@ import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import { User } from "@prisma/client";
 import { signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const UserMenu = ({ currentUser }: { currentUser?: User | null }) => {
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
+  const router = useRouter();
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -33,11 +35,21 @@ const UserMenu = ({ currentUser }: { currentUser?: User | null }) => {
           <div className="flex flex-col cursor-pointer">
             {currentUser ? (
               <>
-                <MenuItem onClick={() => {}} label="Home" />
+                <MenuItem onClick={() => router.push("/")} label="Home" />
+                <MenuItem onClick={() => router.push("/")} label="Favorited" />
+                <MenuItem
+                  onClick={() => router.push("/search")}
+                  label="Search"
+                />
                 <MenuItem onClick={() => signOut()} label="Logout" />
               </>
             ) : (
               <>
+                <MenuItem onClick={() => router.push("/")} label="Home" />
+                <MenuItem
+                  onClick={() => router.push("/search")}
+                  label="Search"
+                />
                 <MenuItem onClick={loginModal.onOpen} label="Login" />
                 <MenuItem onClick={registerModal.onOpen} label="Signup" />
               </>

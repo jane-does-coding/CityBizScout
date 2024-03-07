@@ -46,3 +46,13 @@ img {
   transform: translateY(215px);
   transition: transform 0.5s;
 }
+
+.gradient {
+  background: -webkit-linear-gradient(
+    45deg,
+    #eee,
+    rgb(136, 89, 183)
+  ) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
