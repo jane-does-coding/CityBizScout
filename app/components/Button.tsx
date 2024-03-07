@@ -12,6 +12,7 @@ interface ButtonProps {
   beforeIcon?: IconType;
   afterIcon?: IconType;
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  purple?: Boolean;
 }
 
 const Button = ({
@@ -23,6 +24,7 @@ const Button = ({
   outline,
   disabled,
   onClick,
+  purple,
 }: ButtonProps) => {
   return (
     <button
@@ -30,11 +32,7 @@ const Button = ({
       onClick={onClick}
       className={`bg-neutral-900 w-full flex flex-row items-center justify-center relative hover:opacity-90 transition 
       ${small ? "p-2 text-sm" : "p-3"}
-      ${
-        outline
-          ? "bg-transparent border-2 border-neutral-900 text-black font-semibold hover:bg-neutral-300"
-          : "border-none text-white"
-      }
+      ${purple ? "bg-purple-300 text-black" : " text-white"}
       ${rounded ? "rounded-full" : " rounded-md"}
       `}
     >

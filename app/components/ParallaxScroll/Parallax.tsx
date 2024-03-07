@@ -50,7 +50,6 @@ const Parallax = () => {
 
   return (
     <div className="main px-12 py-8">
-      <div className="spacer h-[100vh]"></div>
       <div
         ref={container}
         className="gallery h-[175vh] bg-slate-700 flex flex-row gap-[2vw] box-border overflow-hidden"
@@ -60,7 +59,6 @@ const Parallax = () => {
         <Column images={[images[6], images[7], images[8]]} y={y3} />
         <Column images={[images[9], images[10], images[11]]} y={y4} />
       </div>
-      <div className="spacer h-[100vh]"></div>
     </div>
   );
 };

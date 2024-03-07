@@ -8,7 +8,7 @@ const Logo = () => {
   const router = useRouter();
   return (
     <Link href={"/"}>
-      <h1 className="cursor-pointer text-neutral-200 font-semibold text-xl">
+      <h1 className="cursor-pointer text-purple-300 font-semibold text-xl">
         CityBizScout
       </h1>
     </Link>

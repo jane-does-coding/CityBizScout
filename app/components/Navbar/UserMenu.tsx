@@ -29,7 +29,7 @@ const UserMenu = ({ currentUser }: { currentUser?: User | null }) => {
       </div>
 
       {isOpen && (
-        <div className="absolute shadow-md rounded-xl border-[1px] border-slate-800/50 w-[40vw] md:w-[20vw] bg-slate-900 overflow-hidden right-0 top-12 text-sm">
+        <div className="absolute shadow-lg rounded-xl border-[1.5px] border-slate-900/50 border-t-slate-900 w-[40vw] md:w-[20vw] bg-slate-800 overflow-hidden right-0 top-12 text-sm">
           <div className="flex flex-col cursor-pointer">
             {currentUser ? (
               <>
