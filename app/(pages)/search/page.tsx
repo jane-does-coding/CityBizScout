@@ -51,6 +51,16 @@ const Page = () => {
   const [coordinates, setCoordinates] = useState({ lat: 0, lng: 0 });
   const [selectedCategory, setSelectedCategory] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+
+  const handleSearchChange = (event: any) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredPlaces = places.filter(
+    (place: any) =>
+      place.name && place.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   /* GET LOCATION */
   useEffect(() => {
@@ -64,19 +74,15 @@ const Page = () => {
         // Call getPlacesData here, after coordinates have been set
         getPlacesData({ lat: latitude, lng: longitude }).then((data) => {
           setPlaces(data);
+          setIsLoading(false); // Set loading to false after data is loaded
         });
       }
     );
   }, []);
 
-  const handleSearchChange = (event: any) => {
-    setSearchTerm(event.target.value);
-  };
-
-  const filteredPlaces = places.filter(
-    (place: any) =>
-      place.name && place.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  if (isLoading) {
+    return <div>Loading...</div>; // Or replace with your own loading component
+  }
 
   return (
     <>
