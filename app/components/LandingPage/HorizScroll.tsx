@@ -67,7 +67,7 @@ function HorizScroll() {
           <div className="scroll-section">
             <div className="flex flex-col items-center justify-center gap-4">
               <h1 className="text-[3rem] text-center text-white">
-                Learn, Improve, Explore!
+                Find, Visit, Explore!
               </h1>
               <p className="w-[50vw] text-center text-white">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo
@@ -76,7 +76,7 @@ function HorizScroll() {
               </p>
               <Link
                 href={"/login"}
-                className="bg-slate-700 py-2 px-8 rounded-md rounded-tl-[3rem] rounded-br-[3rem] text-gray-100 transition hover:tracking-[0.25rem] text-sm"
+                className="bg-slate-700 py-2 px-8 rounded-md rounded-tl-[3rem] rounded-br-[3rem] text-gray-100 transition text-sm"
               >
                 Join Now!
               </Link>
@@ -85,7 +85,7 @@ function HorizScroll() {
           <div className="scroll-section">
             <div className="flex flex-col gap-4 items-center justify-center">
               <h1 className="text-[3rem] text-center mt-12 text-white">
-                View Demo Video
+                Learn more
               </h1>
               <img
                 src={"/9.jpg"}
@@ -94,8 +94,11 @@ function HorizScroll() {
                 alt="image"
                 className="rounded-md"
               />
-              <Link href={"/"} className="px-8 py-4 text-[1.25rem] text-white">
-                View Video
+              <Link
+                href={"/search"}
+                className="px-4 py-2 rounded-full text-[1rem] text-white bg-purple-200/50"
+              >
+                Go to the search page
               </Link>
             </div>
           </div>

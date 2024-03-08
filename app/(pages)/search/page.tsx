@@ -70,13 +70,13 @@ const page = () => {
 
   return (
     <>
-      <div className="absolute top-0 left-0 flex items-end justify-center h-[22.5rem] w-full ">
+      <div className="absolute top-0 left-0 flex items-end justify-center h-[17rem] w-full ">
         <div className="flex flex-col ">
           <h1 className="text-white lg:text-[4rem] xl:text-[5.5rem] text-center tracking-[0.3rem] gradient font-bold opacity-1">
             Explore
           </h1>
-          <h2 className="text-white text-[2rem] text-center">
-            Places to visit
+          <h2 className="text-white text-[1.75rem] text-center">
+            Places in your area
           </h2>
           {/*           <div className="flex gap-2 items-center justify-center  mt-8">
             <input
@@ -92,7 +92,7 @@ const page = () => {
         </div>
       </div>
       {/* RESULTS */}
-      <div className="absolute top-[25rem] px-[5vw] 2xl:px-[10vw] flex flex-col items-center justify-center w-full">
+      <div className="absolute top-[15rem] px-[5vw] 2xl:px-[10vw] flex flex-col items-center justify-center w-full">
         {/* CATEGORIES */}
         {/*         <div className="flex gap-6">
           {categories.map((category) => (
@@ -115,7 +115,11 @@ const page = () => {
           {places.map((place: any, index) => {
             return place.name ? (
               <Card
-                img="/1.jpg"
+                img={
+                  place.photo
+                    ? place.photo.images.large.url
+                    : "/placeholder.png"
+                }
                 title={place.name}
                 location={place.address}
                 key={index}

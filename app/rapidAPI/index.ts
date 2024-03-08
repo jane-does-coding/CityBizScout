@@ -11,7 +11,7 @@ export const getPlacesData = async(coordinates: any) => {
           longitude: coordinates.lng, // Longitude of New York
           limit: '30',
           currency: 'USD',
-          distance: '2',
+          distance: '5',
           open_now: 'false',
           lunit: 'km',
           lang: 'en_US'
