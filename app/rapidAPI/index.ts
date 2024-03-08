@@ -29,3 +29,25 @@ export const getPlacesData = async(coordinates: any) => {
     console.log(err)
   }
 }
+
+export const getPlaceData = async(location_id: any) => {
+  try {
+    const {data} = await axios.get("https://travel-advisor.p.rapidapi.com/attractions/get-details", 
+       {
+        params: {
+          location_id: location_id,
+          currency: 'USD',
+          lang: 'en_US'
+        },
+        headers: {
+          'X-RapidAPI-Key': '9cdf18411cmsh840e6bf955e5b88p1063acjsne25d4696e8c0',
+          'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com'
+        }
+      })
+
+    console.log(data)
+    return data
+  } catch (err) {
+    console.log(err)
+  }
+}

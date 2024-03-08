@@ -11,7 +11,7 @@ import Card from "@/app/components/Card/Card";
 import gsap from "gsap";
 import SplitType from "split-type";
 import "@/app/components/Animation.css";
-import { getPlacesData } from "@/app/rapidAPI";
+import { getPlaceData, getPlacesData } from "@/app/rapidAPI";
 
 const Page = () => {
   const categories = [
@@ -110,7 +110,7 @@ const Page = () => {
         </div>
       </div>
       {/* RESULTS */}
-      <div className="absolute top-[25rem] px-[5vw] 2xl:px-[10vw] flex flex-col items-center justify-center w-full">
+      <div className="absolute top-[22.5rem] px-[5vw] 2xl:px-[10vw] flex flex-col items-center justify-center w-full">
         <div className="grid grid-cols-4 gap-4 w-full my-4 mt-16">
           {filteredPlaces.map((place: any, index) => {
             return place.name ? (
@@ -123,6 +123,7 @@ const Page = () => {
                 title={place.name}
                 location={place.address}
                 key={index}
+                link={place.location_id}
               />
             ) : null;
           })}
