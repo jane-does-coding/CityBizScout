@@ -56,7 +56,7 @@ const Page = ({ params }: { params: IParams }) => {
       {data ? (
         <>
           <div className="md:w-3/5 p-6 px-4">
-            <h1 className="text-xl font-semibold text-[3.5rem] text-white mb-2 mt-24 leading-[4rem]">
+            <h1 className="font-semibold text-[3rem] text-white mb-2 mt-20 leading-[4rem]">
               {data.name}
             </h1>
             {data.rating ? (
@@ -88,12 +88,21 @@ const Page = ({ params }: { params: IParams }) => {
             {data.website_url && (
               <p className="text-gray-500">Website: {data.website_url}</p>
             )}
-            {data.meal_types &&
-              data.meal_types.map((meal_type, index) => (
-                <div key={index}>
-                  <p className="text-gray-500">{meal_type.name}</p>
+            {data.meal_types.length !== 0 && (
+              <>
+                <h2 className="text-xl text-white mt-6 mb-2 text-center">
+                  Meals Served
+                </h2>
+                <div className="flex w-full justify-evenly items-center mb-4">
+                  {data.meal_types.map((meal_type, index) => (
+                    <div key={index}>
+                      <p className="text-slate-400">{meal_type.name}</p>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </>
+            )}
+
             {data.awards &&
               data.awards.map((award) => (
                 <div key={award.display_name}>
@@ -107,7 +116,7 @@ const Page = ({ params }: { params: IParams }) => {
             <h2 className="text-[1.5rem] text-purple-300 text-center font-semibold mb-4">
               Reviews
             </h2>
-            {data.reviews &&
+            {data.reviews ? (
               data.reviews.map((review, index) => (
                 <div key={index} className="mb-6">
                   <p className="font-medium text-white flex items-center justify-between">
@@ -130,7 +139,12 @@ const Page = ({ params }: { params: IParams }) => {
                     )}
                   </div>
                 </div>
-              ))}
+              ))
+            ) : (
+              <p className="text-center text-white">
+                This restaurant has no reviews
+              </p>
+            )}
           </div>
         </>
       ) : (
