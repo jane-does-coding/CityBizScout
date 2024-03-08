@@ -13,7 +13,7 @@ import SplitType from "split-type";
 import "@/app/components/Animation.css";
 import { getPlacesData } from "@/app/rapidAPI";
 
-const page = () => {
+const Page = () => {
   const categories = [
     {
       icon: <IoFastFoodOutline size={26} />,
@@ -126,4 +126,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
