@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { IoFastFoodOutline } from "react-icons/io5";
 import { RiBankLine } from "react-icons/ri";
@@ -11,6 +11,7 @@ import Card from "@/app/components/Card/Card";
 import gsap from "gsap";
 import SplitType from "split-type";
 import "@/app/components/Animation.css";
+import { getPlacesData } from "@/app/rapidAPI";
 
 const page = () => {
   const categories = [
@@ -42,9 +43,26 @@ const page = () => {
     {
       icon: <RiBeerLine size={26} />,
       name: "Brewery",
-      id: 5,
+      id: 6,
     },
   ];
+
+  const [places, setPlaces] = useState([]);
+
+  /* GET LOCATION */
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((data) => {
+      console.log(data);
+    });
+  }, []);
+
+  /* GET DATA */
+  useEffect(() => {
+    getPlacesData().then((data) => {
+      /*       console.log(data);
+       */ setPlaces(data);
+    });
+  }, []);
 
   return (
     <>
@@ -62,6 +80,7 @@ const page = () => {
               className="shadow-lg w-[95vw] md:w-[50vw] bg-slate-800 rounded-full py-3 px-6 text-white border-2 border-slate-800 outline-none focus:outline-none focus:border-2 focus:border-slate-900/50"
               placeholder="Search places"
             />
+
             <button className="bg-purple-300 transition-all hover:bg-purple-300/[60%] cursor-pointer p-[14px] aspect-1 rounded-full">
               <FaSearch size={24} />
             </button>
@@ -74,7 +93,7 @@ const page = () => {
         <div className="flex gap-6">
           {categories.map((category) => (
             <div
-              className="p-3 bg-slate-200 cursor-pointer rounded-full relative"
+              className="p-3 bg-slate-200 hover:bg-slate-300 cursor-pointer rounded-full relative"
               key={category.id}
             >
               {category.icon}
@@ -82,15 +101,19 @@ const page = () => {
           ))}
         </div>
         <div className="grid grid-cols-4 gap-4 w-full my-4 mt-16">
-          <Card img="/1.jpg" title="Title" location="Salt Lake City, Utah" />
-          <Card img="/1.jpg" title="Title" location="Salt Lake City, Utah" />
-          <Card img="/1.jpg" title="Title" location="Salt Lake City, Utah" />
-          <Card img="/1.jpg" title="Title" location="Salt Lake City, Utah" />
-          <Card img="/1.jpg" title="Title" location="Salt Lake City, Utah" />
-          <Card img="/1.jpg" title="Title" location="Salt Lake City, Utah" />
-          <Card img="/1.jpg" title="Title" location="Salt Lake City, Utah" />
-          <Card img="/1.jpg" title="Title" location="Salt Lake City, Utah" />
-          <Card img="/1.jpg" title="Title" location="Salt Lake City, Utah" />
+          {places.map((place: any, index) => {
+            /*             console.log(place);
+             */
+
+            return place.name ? (
+              <Card
+                img="/1.jpg"
+                title={place.name}
+                location={place.address}
+                key={index}
+              />
+            ) : null;
+          })}
         </div>
       </div>
     </>
