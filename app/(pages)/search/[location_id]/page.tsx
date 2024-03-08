@@ -59,14 +59,16 @@ const Page = ({ params }: { params: IParams }) => {
             <h1 className="text-xl font-semibold text-[3.5rem] text-white mb-2 mt-24 leading-[4rem]">
               {data.name}
             </h1>
-            <div className="flex gap-[2px] text-white mb-4">
-              {[...Array(Math.round(Number(data.rating)))].map((_, i) => (
-                <FaStar size={22} key={i} />
-              ))}
-              {[...Array(5 - Math.round(Number(data.rating)))].map((_, i) => (
-                <FaRegStar size={22} key={i} />
-              ))}
-            </div>
+            {data.rating ? (
+              <div className="flex gap-[2px] text-white mb-4">
+                {[...Array(Math.round(Number(data.rating)))].map((_, i) => (
+                  <FaStar size={22} key={i} />
+                ))}
+                {[...Array(5 - Math.round(Number(data.rating)))].map((_, i) => (
+                  <FaRegStar size={22} key={i} />
+                ))}
+              </div>
+            ) : null}
             {data.photo ? (
               <img
                 src={data.photo.images.large.url}
