@@ -50,6 +50,7 @@ const page = () => {
   const [places, setPlaces] = useState([]);
   const [coordinates, setCoordinates] = useState({ lat: 0, lng: 0 });
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
   /* GET LOCATION */
   useEffect(() => {
@@ -68,9 +69,18 @@ const page = () => {
     );
   }, []);
 
+  const handleSearchChange = (event: any) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredPlaces = places.filter(
+    (place: any) =>
+      place.name && place.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <>
-      <div className="absolute top-0 left-0 flex items-end justify-center h-[17rem] w-full ">
+      <div className="absolute top-0 left-0 flex items-end justify-center h-[22.5rem] w-full ">
         <div className="flex flex-col ">
           <h1 className="text-white lg:text-[4rem] xl:text-[5.5rem] text-center tracking-[0.3rem] gradient font-bold opacity-1">
             Explore
@@ -78,41 +88,25 @@ const page = () => {
           <h2 className="text-white text-[1.75rem] text-center">
             Places in your area
           </h2>
-          {/*           <div className="flex gap-2 items-center justify-center  mt-8">
+          <div className="flex gap-2 items-center justify-center  mt-8">
             <input
               type="text"
               className="shadow-lg w-[95vw] md:w-[50vw] bg-slate-800 rounded-full py-3 px-6 text-white border-2 border-slate-800 outline-none focus:outline-none focus:border-2 focus:border-slate-900/50"
               placeholder="Search places"
+              value={searchTerm}
+              onChange={handleSearchChange}
             />
 
             <button className="bg-purple-300 transition-all hover:bg-purple-300/[60%] cursor-pointer p-[14px] aspect-1 rounded-full">
               <FaSearch size={24} />
             </button>
-          </div> */}
+          </div>
         </div>
       </div>
       {/* RESULTS */}
-      <div className="absolute top-[15rem] px-[5vw] 2xl:px-[10vw] flex flex-col items-center justify-center w-full">
-        {/* CATEGORIES */}
-        {/*         <div className="flex gap-6">
-          {categories.map((category) => (
-            <button
-              onClick={() => {
-                setSelectedCategory(category.name);
-              }}
-              className={`p-3 bg-slate-200 cursor-pointer rounded-full relative ${
-                selectedCategory == category.name
-                  ? "bg-purple-400 hover:bg-purple-400/75 text-white"
-                  : "bg-slate-200 hover:bg-slate-300 text-black"
-              }`}
-              key={category.id}
-            >
-              {category.icon}
-            </button>
-          ))}
-        </div> */}
+      <div className="absolute top-[25rem] px-[5vw] 2xl:px-[10vw] flex flex-col items-center justify-center w-full">
         <div className="grid grid-cols-4 gap-4 w-full my-4 mt-16">
-          {places.map((place: any, index) => {
+          {filteredPlaces.map((place: any, index) => {
             return place.name ? (
               <Card
                 img={
