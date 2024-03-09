@@ -81,7 +81,11 @@ const Page = () => {
   }, []);
 
   if (isLoading) {
-    return <div>Loading...</div>; // Or replace with your own loading component
+    return (
+      <div className="w-full h-full flex items-center justify-center">
+        <img src="/loading.gif" width={150} height={150} alt="" />
+      </div>
+    );
   }
 
   return (

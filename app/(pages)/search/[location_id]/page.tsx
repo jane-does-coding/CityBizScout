@@ -148,8 +148,8 @@ const Page = ({ params }: { params: IParams }) => {
           </div>
         </>
       ) : (
-        <div className="p-6 bg-white rounded-xl shadow-md">
-          <p>Loading...</p>
+        <div className="w-full h-screen flex items-center justify-center">
+          <img src="/loading.gif" width={150} height={150} alt="" />
         </div>
       )}
     </div>
